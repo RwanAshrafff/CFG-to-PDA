@@ -14,9 +14,8 @@ CFG-to-PDA-Converter/
 ├── templates/ # Web UI templates
 └── README.md
 
-
 ## 🔥 Features
-- ✅ Parses CFG with `→` or `->` notation
+- ✅ Parses CFG with  `->` notation
 - ✅ Visualizes PDA transitions using Graphviz
 - ✅ Tests string acceptance
 - ✅ Web and CLI interfaces
