@@ -4,15 +4,7 @@ A tool that converts **Context-Free Grammar (CFG)** to a **Pushdown Automaton (P
 
 ## 🗂 Project Structure
 
-CFG-to-PDA-Converter/
-│
-├── src/
-│ ├── app.py # Flask web interface
-│ ├── grammar.py # CFG parser
-│ ├── pda.py # PDA construction & visualization
-│ ├── cli.py # Command-line interface
-├── templates/ # Web UI templates
-└── README.md
+
 
 ## 🔥 Features
 - ✅ Parses CFG with  `->` notation
