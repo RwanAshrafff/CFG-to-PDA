@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CFG to PDA Converter</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>CFG to PDA Converter</h1>
+        
+        {% if error %}
+        <div class="error">{{ error }}</div>
+        {% endif %}
+        
+        <form method="POST">
+            <div class="form-group">
+                <label for="cfg">Enter Context-Free Grammar:</label>
+                <textarea id="cfg" name="cfg" rows="10" required>{{ cfg_text }}</textarea>
+                <small>Format: First line is start symbol, second line is terminals (comma-separated), followed by production rules.</small>
+            </div>
+            <button type="submit">Convert to PDA</button>
+        </form>
+        {% if graph_path %}
+        <div class="result-section">
+            <h2>PDA Diagram</h2>
+            <img src="{{ graph_path }}" alt="PDA Diagram">
+        </div>
+        {% endif %}
+        
+        {% if test_string and test_result is not none %}
+        <div class="result-section">
+            <h2>Test Result</h2>
+            <p>String "{{ test_string }}" was 
+                <span class="{% if test_result %}accepted{% else %}rejected{% endif %}">
+                    {% if test_result %}accepted{% else %}rejected{% endif %}
+                </span>
+            </p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
