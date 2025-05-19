@@ -14,7 +14,7 @@ CFG-to-PDA/
 ├── README.md
 
 ```
----
+
 ## 🔥 Features
 - ✅ Parses CFG with  `->` notation
 - ✅ Visualizes PDA transitions using Graphviz
