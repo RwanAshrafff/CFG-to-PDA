@@ -61,12 +61,12 @@ def draw(delta, fname='pda_graph'):
                 if qn not in mapping:
                     mapping[qn] = str(next(helper_counter))
                     visible.add(qn)
-    dot.node('entry', shape='point', color='black')
+
+    dot.node(mapping[Q1], _attributes={'root': 'true'})
     for q in visible:
         shape = 'doublecircle' if q == QF else 'circle'
         dot.node(mapping[q], label=mapping[q], shape=shape)
-    dot.edge('entry', mapping[Q1], arrowhead='none')
-
+    
     def lbl(a, pop, push):
         return f'{a or EPS}, {pop or EPS} → {push or EPS}'
     for q in delta:
