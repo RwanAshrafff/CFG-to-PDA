@@ -49,9 +49,9 @@ def print_delta(delta):
 def draw(delta, fname='pda_graph'):
     dot = Digraph('PDA', format='png')
     dot.attr(rankdir='LR', nodesep='0.9', ranksep='0.7',
-             splines='polyline', fontname='Helvetica', fontsize='12')
+            splines='polyline', fontname='Helvetica', fontsize='12')
     dot.attr('node', shape='circle', style='filled',
-             fillcolor='#ffffff', color='#8e8e8e', width='0.8')
+            fillcolor='#ffffff', color='#8e8e8e', width='0.8')
     mapping = {Q1: '1', Q2: '2', Q3: '3', QF: '4'}
     helper_counter = itertools.count(start=5)
     visible = {Q1, Q2, Q3, QF}

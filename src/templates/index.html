@@ -22,6 +22,35 @@
             </div>
             <button type="submit">Convert to PDA</button>
         </form>
+
+        {% if delta_table %}
+        <div class="result-section">
+            <h2>Transition Table</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>From State</th>
+                        <th>Input</th>
+                        <th>Pop</th>
+                        <th>To State</th>
+                        <th>Push</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for transition in delta_table %}
+                    <tr>
+                        <td>{{ transition['from'] }}</td>
+                        <td>{{ transition['input'] }}</td>
+                        <td>{{ transition['pop'] }}</td>
+                        <td>{{ transition['to'] }}</td>
+                        <td>{{ transition['push'] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% endif %}
+
         {% if graph_path %}
         <div class="result-section">
             <h2>PDA Diagram</h2>
