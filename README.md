@@ -13,6 +13,7 @@ CFG-to-PDA/
 │   ├── pda.py         # Logic for generating the PDA from the CFG
 ├── README.md
 
+```
 ---
 ## 🔥 Features
 - ✅ Parses CFG with  `->` notation
