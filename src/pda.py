@@ -10,12 +10,16 @@ Q1, Q2, Q3, QF = 'q1', 'q2', 'q3', 'qf'
 def build_pda(start, terms, prods):
     d = defaultdict(lambda: defaultdict(set))
     def push(q, a, pop, qn, strg): return d[q][(a, pop)].add((qn, strg))
+
     push(Q1, EPS, EPS, Q2, BOT)
     push(Q2, EPS, EPS, Q3, start)
+
     for A, values in prods.items():
         for value in values:
             if not value:
                 push(Q3, EPS, A, Q3, '')
+            elif len(value) == 1:
+                push(Q3, EPS, A, Q3, value[0])
             else:
                 rev = value[::-1]
                 last, rest = rev[0], rev[1:]
@@ -23,12 +27,15 @@ def build_pda(start, terms, prods):
                 h_id = itertools.count(start=4)
                 h_next = f'q{next(h_id)}'
                 push(h_curr, EPS, A, h_next, last)
-                for sym in rest:
-                    h_curr, h_next = h_next, f'q{next(h_id)}'
-                    push(h_curr, EPS, EPS, h_next, sym)
-                push(h_next, EPS, EPS, Q3, '')
+                for i, sym in enumerate(rest):
+                    if i == len(rest) - 1:
+                        push(h_next, EPS, EPS, Q3, sym)
+                    else:
+                        h_curr, h_next = h_next, f'q{next(h_id)}'
+                        push(h_curr, EPS, EPS, h_next, sym)
     for a in terms:
         push(Q3, a, a, Q3, '')
+
     push(Q3, EPS, BOT, QF, '')
     return d
 
